@@ -117,18 +117,27 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR=vim
 
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+
 # Ruby rbenv for github linguist
 eval "$(rbenv init - zsh)"
 
-export PATH="$HOME/Flutter/flutter/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$HOME/Flutter/flutter/bin"
 
 
 eval $(thefuck --alias)
 export PATH="$HOME/.local/bin:$PATH"
 
-# Personal aliases
+
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update'
-alias gcsigm='git commit -S -m'
-alias l='lsd -la'
+alias l='exa -la'
 alias c='clear'
 alias zshconfig='vim ~/.zshrc'
+alias pri='poetry run invoke'
+alias dcu='docker compose up'
+alias dcb='docker compose build'
+alias dcub='docker compose up --build'
+alias c.='code .'
+alias gcsig='git commit -S'
+alias gcsigm="git commit -S -m"
